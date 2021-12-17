@@ -84,33 +84,20 @@ public class OrderService {
         return aBoolean;
     }
 
-    public List<Order> getZone(String zone) {
-        return orderRepository.getZone(zone);
-    }
-    
-    public List<Order> getBySalesManId(Integer id) {
-        return orderRepository.getBySalesManId(id);
+    public List<Order> getOrderByZone(String zone){
+        return orderRepository.getOrderByZone(zone);
     }
 
-    public List<Order> getByIdSalesManIdAndState(Integer id, String state) {
-        return orderRepository.getBySalesManIdAndStatus(id, state);
+    public List<Order> getOrderBySalesManId(Integer salesManId){
+        return orderRepository.getOrderBySalesManId(salesManId);
     }
 
-    public List<Order> getByRegisterDayAndSalesManId(String registerDay, Integer id) {
-        return orderRepository.getByRegisterDayAndSalesManId(registerDay, id);
+    public List<Order> getOrderByStatusAndSalesManId(String status, Integer salesManId){
+        return orderRepository.getOrderByStatusAndSalesManId(status, salesManId);
     }
 
-    public List<Order> ordersSalesManById(Integer id){
-        return orderRepository.ordersSalesManById(id);
-    }
-
-    public List<Order> findByZone(String zona) {
-        return orderRepository.findByZone(zona);
-    }
-    public List<Order> ordersSalesManByDate(String dateStr, Integer id) {
-        return orderRepository.ordersSalesManByDate(dateStr, id);
-    }
-    public List<Order> ordersSalesManByStatus(String status, Integer id) {
-        return orderRepository.ordersSalesManByStatus(status, id);
+    public List<Order> getOrderByRegisterDayAndSalesManId(String registerDay, Integer salesManId){
+        return orderRepository.getOrderByRegisterDayAndSalesManId(registerDay, salesManId);
     }
 }
+

@@ -14,20 +14,14 @@ public class UserRepository {
     @Autowired
     private UserCrudRepository userCrudRepository;
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         return (List<User>) userCrudRepository.findAll();
     }
-
     public Optional<User> getUser(int id){
         return userCrudRepository.findById(id);
     }
 
-    public boolean ExisteEmail(String email){
-        Optional<User> user = userCrudRepository.findByEmail(email);
-        return !user.isEmpty();
-    }
-
-    public User save(User user){
+    public User create(User user){
         return userCrudRepository.save(user);
     }
 
@@ -41,24 +35,16 @@ public class UserRepository {
 
     public boolean emailExists(String email){
         Optional<User> user = userCrudRepository.findByEmail(email);
-        return user.isPresent();
+        return !user.isEmpty();
     }
 
-    public Optional<User> authenticateUser(String email, String password){
+    public Optional<User> authenticateUser (String email, String password){
         return userCrudRepository.findByEmailAndPassword(email, password);
     }
 
     public Optional<User> getUserByNameOrEmail(String name, String email){
         return userCrudRepository.findByNameOrEmail(name, email);
     }
-
-    public Optional<User> lastUserId() {
-        return null;
-    }
-
-    public User create(User user) {
-        return null;
-    }
-    
 }
+
 

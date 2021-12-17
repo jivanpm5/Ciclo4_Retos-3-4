@@ -31,49 +31,51 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/all")
-    public List<Order> getAll() {
+    public List<Order> getAll(){
         return orderService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Order> getOrder(@PathVariable("id") int id) {
+    public Optional<Order> getOrder(@PathVariable("id") Integer id){
         return orderService.getOrder(id);
     }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public Order create(@RequestBody Order order) {
+    public Order create(@RequestBody Order order){
         return orderService.create(order);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Order update(@RequestBody Order order) {
+    public Order update(@RequestBody Order order){
         return orderService.update(order);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Integer id) {
+    public boolean delete(@PathVariable("id") Integer id){
         return orderService.delete(id);
     }
+
     @GetMapping("/zona/{zone}")
-    public List<Order> getZone(@PathVariable("zone") String zone){
-        return orderService.getZone(zone);
+    public  List<Order> getOrdersByZone(@PathVariable("zone") String zone){
+        return orderService.getOrderByZone(zone);
     }
 
     @GetMapping("/salesman/{id}")
-    public List<Order> getBySalesManId(@PathVariable("id") Integer id){
-        return orderService.getBySalesManId(id);
+    public List<Order> getOrderBySalesManId(@PathVariable("id") Integer id){
+        return orderService.getOrderBySalesManId(id);
     }
 
-    @GetMapping("/status/{status}/{id}")
-    public List<Order> ordersSalesManByStatus(@PathVariable("id") Integer id,@PathVariable("status") String status){
-        return orderService.ordersSalesManByStatus(status, id);
+    @GetMapping("/state/{status}/{salesManId}")
+    public List<Order> getOrderByStatusAndSalesManId(@PathVariable("status") String status, @PathVariable("salesManId") Integer salesManId){
+        return orderService.getOrderByStatusAndSalesManId(status, salesManId);
     }
 
-    @GetMapping("/date/{date}/{id}")
-    public List<Order> ordersSalesManByDate(@PathVariable("date") String dateStr, @PathVariable("id") Integer id) {
-        return orderService.ordersSalesManByDate(dateStr,id);
+    @GetMapping("/date/{registerDay}/{salesManId}")
+    public List<Order> getOrderByRegisterDayAndSalesManId(@PathVariable("registerDay") String registerDay, @PathVariable("salesManId")Integer salesManId){
+        return orderService.getOrderByRegisterDayAndSalesManId(registerDay, salesManId);
     }
+
 }
