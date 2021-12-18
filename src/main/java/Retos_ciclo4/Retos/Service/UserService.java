@@ -1,6 +1,5 @@
 package Retos_ciclo4.Retos.Service;
 
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import Retos_ciclo4.Retos.Repository.UserRepository;
 
 @Service
 public class UserService {
-    
+
     @Autowired
     private UserRepository userRepository;
 
@@ -29,7 +28,7 @@ public class UserService {
         } else {
             Optional<User> e = userRepository.getUser(user.getId());
             if (e.isEmpty()) {
-                if (emailExists(user.getEmail())==false) {
+                if (emailExists(user.getEmail()) == false) {
                     return userRepository.create(user);
                 } else {
                     return user;
@@ -51,7 +50,7 @@ public class UserService {
                 if (user.getName() != null) {
                     dbUser.get().setName(user.getName());
                 }
-                if (user.getBirthtDay() != null){
+                if (user.getBirthtDay() != null) {
                     dbUser.get().setBirthtDay(user.getBirthtDay());
                 }
                 if (user.getMonthBirthtDay() != null) {
@@ -102,5 +101,12 @@ public class UserService {
         } else {
             return user.get();
         }
+
     }
+
+    public List<User> getByMonthBirthDay(String month) {
+        return userRepository.getByMonthBirthDay(month);
+
+    }
+
 }

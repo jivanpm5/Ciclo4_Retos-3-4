@@ -58,5 +58,14 @@ public class CookwareController {
         return productService.delete(reference);
     }
 
+    @GetMapping("/price/{price}")
+    public List<Cookware> getByPrice(@PathVariable("price") double price){
+        return productService.getByPrice(price);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<Cookware> getByDescriptionContains(@PathVariable("description") String description){
+        return productService.getByDescriptionContains(description);
+    }
 }
 
