@@ -52,9 +52,7 @@ public class OrderService {
                 if (order.getStatus() != null) {
                     orden.get().setStatus(order.getStatus());
                 }
-                if (order.getSalesMan() != null) {
-                    orden.get().setStatus(order.getStatus());
-                }
+                
                 if (order.getSalesMan() != null) {
                     orden.get().setSalesMan(order.getSalesMan());
                 }

@@ -23,6 +23,7 @@ public class CookwareRepository {
         return productCrudRepository.findById(id);
     }
 
+
     public Cookware create(Cookware product){
         return productCrudRepository.save(product);
     }
@@ -36,7 +37,7 @@ public class CookwareRepository {
     }
 
     public List<Cookware> getByPrice(double price){
-        return productCrudRepository.findByPrice(price);
+        return productCrudRepository.findByPriceLessThanEqual(price);
     }
 
     public List<Cookware> getByDescriptionContains(String description){

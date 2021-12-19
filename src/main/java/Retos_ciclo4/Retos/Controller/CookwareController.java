@@ -35,27 +35,27 @@ public class CookwareController {
         return productService.getAll();
     }
 
-    @GetMapping("/{reference}")
-    public Optional<Cookware> getCleaningProduct(@PathVariable("reference") String reference) {
-        return productService.getCleaningProducts(reference);
+    @GetMapping("/{id}")
+    public Optional<Cookware> getProduct(@PathVariable("id")  int id) {
+        return productService.getProduct(id);
     }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Cookware gadget){
-        productService.save(gadget);
+    public void create(@RequestBody Cookware cookware){
+        productService.save(cookware);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cookware update(@RequestBody Cookware gadget){
-        return productService.save(gadget);
+    public Cookware update(@RequestBody Cookware cookware){
+        return productService.save(cookware);
     }
 
-    @DeleteMapping("/{reference}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("reference") String reference){
-        return productService.delete(reference);
+    public boolean delete(@PathVariable("id") String id){
+        return productService.delete(id);
     }
 
     @GetMapping("/price/{price}")

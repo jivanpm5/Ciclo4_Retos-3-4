@@ -23,7 +23,6 @@ public class CookwareService {
     public Optional<Cookware> getCleaningProducts(String reference){
         return productRepository.getProduct(reference);
     }
-
     public Cookware save(Cookware cleaningProduct){
         if(cleaningProduct.getReference() == null) {
             return cleaningProduct;
@@ -43,9 +42,18 @@ public class CookwareService {
                 if (product.getCategory() != null) {
                     dbProduct.get().setCategory(product.getCategory());
                 }
+                if (product.getMateriales() != null) {
+                    dbProduct.get().setCategory(product.getCategory());
+                }
+                if (product.getDimensiones() != null) {
+                    dbProduct.get().setCategory(product.getCategory());
+                }
                 if (product.getDescription() != null) {
                     dbProduct.get().setDescription(product.getDescription());
                 }
+
+                dbProduct.get().setAvailability(product.isAvailability());
+                
                 if (product.getPrice() != 0.0) {
                     dbProduct.get().setPrice(product.getPrice());
                 }
@@ -55,7 +63,7 @@ public class CookwareService {
                 if (product.getPhotography() != null) {
                     dbProduct.get().setPhotography(product.getPhotography());
                 }
-                dbProduct.get().setAvailability(product.isAvailability());
+                
                 productRepository.update(dbProduct.get());
                 return dbProduct.get();
             } else {
@@ -80,5 +88,9 @@ public class CookwareService {
 
     public List<Cookware> getByDescriptionContains(String description){
         return productRepository.getByDescriptionContains(description);
+    }
+
+    public Optional<Cookware> getProduct(int id) {
+        return null;
     }
 }

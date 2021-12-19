@@ -71,6 +71,9 @@ public class UserService {
                 if (user.getZone() != null) {
                     dbUser.get().setZone(user.getZone());
                 }
+                if (user.getType() != null) {
+                    dbUser.get().setType(user.getType());
+                }
                 userRepository.update(dbUser.get());
                 return dbUser.get();
             } else {
